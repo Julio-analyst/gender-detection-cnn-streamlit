@@ -21,8 +21,9 @@ ENV/
 Thumbs.db
 
 # Models (auto-generated)
-models/*.h5
-!models/.gitkeep
+# Models
+models/archive/
+!models/*.h5
 
 # Logs
 logs/

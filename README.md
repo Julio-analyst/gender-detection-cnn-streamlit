@@ -1,69 +1,83 @@
-# 🎤 Gender Voice Detection - Streamlit App
+# 🎤 Gender Voice Detection
 
-Deteksi gender (Laki-laki/Perempuan) menggunakan Deep Learning - CNN LSTM Model
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-orange)
+![License](https://img.shields.io/badge/License-MIT-green)
+<br />
+<div align="center">
+  <img src="assets/app_screenshot.png" alt="App Screenshot" width="800">
+</div>
 
-## 🚀 Deployment ke Streamlit Cloud
+A Deep Learning application to detect gender (Male/Female) from voice recordings using **CNN-LSTM** architecture. This project analyzes audio features (MFCC) to predict gender with high accuracy.
 
-### Persiapan Repository
-Pastikan file-file berikut ada di root repository Anda:
+## 🌟 Features
+
+- 🎙️ **Real-time Recording**: Record your voice directly from the browser.
+- 📁 **File Upload Support**: Compatible with WAV, MP3, M4A, and FLAC formats.
+- 📊 **Advanced Visualization**: View real-time Audio Waveforms and MFCC (Mel-frequency cepstral coefficients) heatmaps.
+- 🧠 **Deep Learning Model**: Powered by a custom trained CNN-LSTM model using TensorFlow/Keras.
+- 📈 **Confidence Score**: Detailed probability breakdown for predictions.
+
+## 🛠️ Tech Stack
+
+- **Framework**: Streamlit
+- **Deep Learning**: TensorFlow, Keras
+- **Audio Processing**: Librosa, SoundFile, NoiseReduce
+- **Visualization**: Matplotlib
+- **Language**: Python 3.11
+
+## 📂 Project Structure
 
 ```
-├── app.py                    # Main Streamlit app
-├── requirements.txt          # Python dependencies
-├── packages.txt             # System packages
-├── runtime.txt              # Python version
 ├── models/
-│   └── lstm_production.h5   # Trained model
-├── .streamlit/
-│   └── config.toml          # Streamlit config
-└── README.md                # This file
+│   └── lstm_production.h5    # The active trained model
+├── notebooks/
+│   └── Tubes_DL.ipynb        # Model training and experimentation
+├── app.py                    # Main Streamlit application
+├── requirements.txt          # Python dependencies
+├── packages.txt             # System level dependencies
+└── README.md                # Project documentation
 ```
 
-### Langkah Deploy
+## 🚀 How to Run Locally
 
-1. **Push ke GitHub**
-   ```bash
-   git add .
-   git commit -m "Ready for deployment"
-   git push origin main
-   ```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/Start-Ho/Gender-Based-Voice-Detection.git
+    cd Gender-Based-Voice-Detection
+    ```
 
-2. **Deploy ke Streamlit Cloud**
-   - Buka [share.streamlit.io](https://share.streamlit.io)
-   - Connect ke GitHub repository Anda
-   - Pilih branch `main`
-   - Set main file path: `app.py`
-   - Klik Deploy!
+2.  **Create a virtual environment (Optional but Recommended)**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # Mac/Linux
+    source venv/bin/activate
+    ```
 
-### Dependencies yang Diperbaiki
+3.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-- **TensorFlow 2.15.0**: Compatible dengan Streamlit 1.29.0
-- **NumPy 1.24.3**: Compatible dengan TensorFlow 2.15.0
-- **Python 3.11**: Specified di runtime.txt
+4.  **Run the App**
+    ```bash
+    streamlit run app.py
+    ```
 
-### Troubleshooting
+## 🧠 Model Architecture
 
-Jika deploy gagal:
+The core model combines **Convolutional Neural Networks (CNN)** for feature extraction from spectral data and **Long Short-Term Memory (LSTM)** networks for handling temporal sequences in audio data.
 
-1. **Protobuf Conflict**: Sudah diperbaiki dengan TensorFlow 2.15.0
-2. **Model Not Found**: Pastikan `models/lstm_production.h5` ada
-3. **Audio Processing**: `packages.txt` sudah include ffmpeg dan libsndfile1
+- **Input**: 13 MFCC coefficients extracted from audio.
+- **Hidden Layers**: CNN layers followed by LSTM units.
+- **Optimization**: Adam optimizer with categorical cross-entropy loss.
 
-### Features
+## 📄 License
 
-- 🎙️ **Rekam Suara**: Real-time recording via microphone
-- 📁 **Upload File**: Support WAV, MP3, M4A, FLAC
-- 📊 **Visualisasi**: Waveform dan MFCC features
-- 🎯 **Prediksi**: CNN LSTM model untuk akurasi tinggi
-- 📈 **Confidence Score**: Breakdown probabilitas gender
-
-### Model Info
-
-- **Architecture**: CNN + LSTM
-- **Input**: MFCC features (13 coefficients)
-- **Sample Rate**: 16kHz
-- **Framework**: TensorFlow/Keras
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-Made with ❤️ using Streamlit & TensorFlow
+*Created as a Deep Learning Final Project.*
